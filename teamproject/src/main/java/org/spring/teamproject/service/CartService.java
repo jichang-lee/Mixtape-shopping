@@ -92,28 +92,59 @@ public class CartService {
         }
     }
 
+    public Long memberid (String email) {
+        Optional<MemberEntity> member = memberRepository.findByEmail(email);
 
+        return member.get().getNo();
 
-        public List<CartItemDto> cartVIew(){
-        
-        List<CartItemDto> cartItemDto = new ArrayList<>();
-
-           List<CartItemEntity> cartItemEntities = cartItemRepository.findAll();
-
-           for(CartItemEntity cartItem : cartItemEntities){
-                ItemEntity itemEntity =cartItem.getItem();
-
-               cartItemDto.add(CartItemDto.cartItemDto(cartItem,itemEntity));
-           }
-            return cartItemDto;
-        }
+    }
 
 
 
+//        public List<CartItemDto> cartVIew(Long id){
+//
+//        Optional<MemberEntity> member=memberRepository.findByNo(id);
+//        cartRepository.findByMemberNo(member.get().getNo());
+//
+//        List<CartItemDto> cartItemDto = new ArrayList<>();
+//
+//           List<CartItemEntity> cartItemEntities = cartItemRepository.findAll();
+//
+//           for(CartItemEntity cartItem : cartItemEntities){
+//                ItemEntity itemEntity =cartItem.getItem();
+//
+//               cartItemDto.add(CartItemDto.cartItemDto(cartItem,itemEntity));
+//           }
+//            return cartItemDto;
+//        }
+public List<CartItemDto> cartVIew(Long id){
+    Optional<MemberEntity> member=memberRepository.findByNo(id);
+
+    List<CartItemDto> cartItemDto = new ArrayList<>();
+    List<CartItemEntity> cartItemEntities = cartItemRepository.findByCartMember(member.get());
+
+    for(CartItemEntity cartItem : cartItemEntities){
+        ItemEntity itemEntity = cartItem.getItem();
+        cartItemDto.add(CartItemDto.cartItemDto(cartItem, itemEntity));
+    }
+
+    return cartItemDto;
+}
 
 
 
-        //장바구니 안에 특정 아이템 삭제
+
+
+
+
+
+
+
+
+
+
+
+    //장바구니 안에 특정 아이템 삭제
         public void cartItemDelete(Long cartItemNo){
             CartItemEntity cartItem= cartItemRepository.deleteByNo(cartItemNo);
         }

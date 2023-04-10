@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.lang.reflect.Member;
 import java.rmi.MarshalledObject;
@@ -36,19 +39,42 @@ public class CartController {
 
 
 
+//    @GetMapping("/cart")
+//    public String cartView( Model model){
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String email = authentication.getName();
+//        MemberDto memberDto = memberService.memberDetail(email);
+//
+//
+//        List<CartItemDto> cartItemDtos= cartService.cartVIew();
+//
+//        model.addAttribute("cartItem",cartItemDtos);
+//        model.addAttribute("member",memberDto.getUserName());
+//        return "pages/member/myitem";
+//    }
+
     @GetMapping("/cart")
-    public String cartView( Model model){
+    public String cartView(Model model ,HttpServletRequest request){
+
+        Principal principal = request.getUserPrincipal();
+        Long id = cartService.memberid(principal.getName());
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         MemberDto memberDto = memberService.memberDetail(email);
 
-
-        List<CartItemDto> cartItemDtos= cartService.cartVIew();
+        List<CartItemDto> cartItemDtos= cartService.cartVIew(id);
 
         model.addAttribute("cartItem",cartItemDtos);
         model.addAttribute("member",memberDto.getUserName());
+
         return "pages/member/myitem";
+
     }
+
+
+
+
 
 
 

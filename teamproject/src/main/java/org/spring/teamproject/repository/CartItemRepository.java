@@ -7,6 +7,7 @@ import org.spring.teamproject.entity.ItemEntity;
 import org.spring.teamproject.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,10 +22,9 @@ public interface CartItemRepository extends JpaRepository<CartItemEntity , Long>
     CartItemEntity deleteByNo(Long cartItemNo);
 
 
+    List<CartItemEntity> findByCartMember(MemberEntity member);
 
-//    @Query(value = "select ci.*, i.price , i.producer from cart_item ci join item i on i.item_no = ci.item_no"
-//            , nativeQuery = true)
-//    List<CartItemDto> findAllItemList(Long cartNo);
+
 
 
 
