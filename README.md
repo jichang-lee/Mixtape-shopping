@@ -24,10 +24,13 @@
 - Framework : Springboot(2.x)
 - Database : Oracle DB
 
+## 📰 DB구조
+
+![image](https://user-images.githubusercontent.com/116870832/231031994-045dab5d-5dba-4dd1-94a9-3762488410a8.png)
 
 ## 📌 주요 기능
 
-![image](https://user-images.githubusercontent.com/116870832/231031994-045dab5d-5dba-4dd1-94a9-3762488410a8.png)
+
 
 
 
