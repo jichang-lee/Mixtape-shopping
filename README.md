@@ -37,7 +37,7 @@
 #### 2. 기능에 대한 코드 리뷰는 제가 담당한 서비스에만 상세보기 link로 달아두었습니다.
 ---
 
-#### 로그인 & Security
+#### 로그인 & Main화면 View
 
 https://user-images.githubusercontent.com/116870832/231047047-6b141baf-ff95-4d22-af52-f0e4f4d37560.mp4
 
