@@ -28,7 +28,7 @@
 
 ![image](https://user-images.githubusercontent.com/116870832/231031994-045dab5d-5dba-4dd1-94a9-3762488410a8.png)
 
-* Item을 추가할 때 Member 테이블에 Role = ADMIN 추가한 상품 목록을 확인하기 위함
+* Item 테이블에 member_id는 상품을 추가할 때 Member 테이블에 Role = ADMIN 관리자가 상품 추가한 목록을 확인하기 위함
 * cartItem은 cart 와 Item 사이에 매개역할 : 장바구니에 여러 아이템이 생길 수 있는데 여러개 상품정보에 대한 중복 처리 & 관리에 용이
 
 ## 📌 주요 기능
