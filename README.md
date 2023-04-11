@@ -28,6 +28,8 @@
 
 ![image](https://user-images.githubusercontent.com/116870832/231031994-045dab5d-5dba-4dd1-94a9-3762488410a8.png)
 
+* Item을 추가할 때 Member 테이블에 Role = ADMIN 추가한 상품 목록을 확인하기 위함
+
 ## 📌 주요 기능
 
 
