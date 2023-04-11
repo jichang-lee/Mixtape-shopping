@@ -50,9 +50,9 @@
 
 ---
 
-#### 로그인 & Main화면 View 
+#### 간단한 Main View 영상
 
-https://user-images.githubusercontent.com/116870832/231047047-6b141baf-ff95-4d22-af52-f0e4f4d37560.mp4
+https://user-images.githubusercontent.com/116870832/231089788-804e8fd3-97a1-48cf-8d6e-59ffd03ff640.mp4
 
 
 
