@@ -41,7 +41,7 @@
 
 
 ## 🔧 기능 소개
-###  ❗ 구현 된 서비스
+###  ❗ 프로젝트 
 #### 1. 회원가입
 #### 2. 상품 추가,조회,수정,삭제
 #### 3. 장바구니 담기,조회,  - [코드 보기](https://github.com/jichang-lee/Mixtape-shopping/wiki/%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88-%EA%B8%B0%EB%8A%A5)
