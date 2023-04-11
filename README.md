@@ -41,9 +41,13 @@
 
 
 ## 🔧 기능 소개
-###  ❗ 기능소개 리뷰에 앞서
-#### 1. 해당 기능에 대한 시연영상은 학원에서 작성한 ppt 자료에 첨부된 영상을 가져왔습니다.
-#### 2. 기능에 대한 코드 리뷰는 제가 담당한 서비스에만 상세보기 link로 달아두었습니다.
+###  ❗ 구현 된 서비스
+#### 1. 회원가입
+#### 2. 상품 추가,조회,수정,삭제
+#### 3. 장바구니 담기,조회,  - [코드 보기](https://github.com/jichang-lee/Mixtape-shopping/wiki/%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88-%EA%B8%B0%EB%8A%A5)
+#### 4. 게시판 추가,조회,수정,삭제
+#### 5. 게시판에 대한 댓글기능
+
 ---
 
 #### 로그인 & Main화면 View - [config package 이동](https://github.com/jichang-lee/Mixtape-shopping/tree/master/teamproject/src/main/java/org/spring/teamproject/config)
@@ -51,16 +55,9 @@
 https://user-images.githubusercontent.com/116870832/231047047-6b141baf-ff95-4d22-af52-f0e4f4d37560.mp4
 
 
-#### 회원가입
 
 
-#### 상품 추가,조회,수정,삭제
 
-#### 장바구니 담기,조회,  - [코드 보기](https://github.com/jichang-lee/Mixtape-shopping/wiki/%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88-%EA%B8%B0%EB%8A%A5)
-
-#### 게시판 추가,조회,수정,삭제
-
-#### 게시판에 대한 댓글기능
 
 
 
