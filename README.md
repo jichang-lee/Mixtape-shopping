@@ -38,7 +38,9 @@
 ---
 
 #### 로그인 & Security
-![image](https://user-images.githubusercontent.com/116870832/231046395-b36592ee-e367-4912-bb9a-e93d850db061.png)
+
+https://user-images.githubusercontent.com/116870832/231047047-6b141baf-ff95-4d22-af52-f0e4f4d37560.mp4
+
 
 
 
