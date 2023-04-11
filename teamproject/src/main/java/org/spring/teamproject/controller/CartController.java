@@ -36,31 +36,13 @@ public class CartController {
     private final CartService cartService;
 
 
-
-
-
-//    @GetMapping("/cart")
-//    public String cartView( Model model){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String email = authentication.getName();
-//        MemberDto memberDto = memberService.memberDetail(email);
-//
-//
-//        List<CartItemDto> cartItemDtos= cartService.cartVIew();
-//
-//        model.addAttribute("cartItem",cartItemDtos);
-//        model.addAttribute("member",memberDto.getUserName());
-//        return "pages/member/myitem";
-//    }
-
     @GetMapping("/cart")
     public String cartView(Model model ,HttpServletRequest request){
 
         Principal principal = request.getUserPrincipal();
-        Long id = cartService.memberid(principal.getName());
+        Long id = memberService.memberid(principal.getName());
+        String email = memberService.memberEmail(principal.getName());
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
         MemberDto memberDto = memberService.memberDetail(email);
 
         List<CartItemDto> cartItemDtos= cartService.cartVIew(id);
@@ -72,26 +54,24 @@ public class CartController {
 
     }
 
-
-
-
-
-
-
     //장바구니 담기
     @PostMapping("/cart/{memberNo}/{itemNo}")
     public String cartAdd(@PathVariable("memberNo") Long memberNo, @PathVariable("itemNo") Long itemNo, Model model){
 
-        MemberEntity memberEntity= cartService.memberSearch(memberNo);
-        ItemEntity itemEntity = cartService.itemSearch(itemNo);
-
+        MemberEntity memberEntity= memberService.memberSearch(memberNo);
+        ItemEntity itemEntity = itemService.itemSearch(itemNo);
 
         cartService.cartAdd(memberEntity,itemEntity);
 
         return "redirect:/cart";
     }
 
+    @PostMapping("cart/delete/{id}")
+    public String cartDelete(@PathVariable Long id){
+        cartService.cartItemDelete(id);
+        return "redirect:/cart";
 
+    }
 
 
 

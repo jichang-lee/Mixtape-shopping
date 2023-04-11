@@ -17,7 +17,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -37,12 +39,14 @@ public class TrackController {
 
     // track 추가 실행
     @PostMapping("/trackAdd")
-    public String addmet(@Valid ItemDto itemDto, BindingResult bindingResult) {
-
+    public String addmet(@Valid ItemDto itemDto, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
             return "/pages/track/trackInsert";
         }
-        itemService.itemInsert(itemDto);
+        Principal principal = request.getUserPrincipal();
+         Long id = memberService.memberid(principal.getName());
+
+        itemService.itemInsert(itemDto,id);
 
         return "redirect:/trackList";
     }
@@ -98,22 +102,6 @@ public class TrackController {
         return "pages/track/trackList";
     }
 
-    /*// track 상세목록
-    @GetMapping("/trackDetail/{itemNo}/{memberNo}")
-    public String trackDetail(@PathVariable("no") long no, @PathVariable("memberNo") Long memberNo, Model model){
-         List<ItemDto> itemDto=itemService.trackDetailRandom(no);
-        MemberDto memberDto = cartService.memberDtoSearch(memberNo);
-
-        if(itemDto!= null){
-            model.addAttribute("dto", itemDto);
-            model.addAttribute("itemDto",itemDto);
-            model.addAttribute("member",memberDto);
-            return "pages/track/trackDetail";
-        }else{
-            return null;
-        }*/
-
-//    }
 
     @GetMapping("/trackDetail/{itemNo}/{memberNo}")
     public String trackDetail(@PathVariable("itemNo") Long itemNo,@PathVariable("memberNo") Long memberNo, Model model){

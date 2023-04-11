@@ -55,68 +55,9 @@ public class CartService {
 
     }
 
-    public MemberDto memberDtoSearch(Long memberNo){
-
-        Optional<MemberEntity> member = memberRepository.findByNo(memberNo);
-        if(member.isPresent()){
-            MemberDto memberDto = MemberDto.updateMemberDto(member.get());
-            return memberDto;
-        }else {
-            return null;
-        }
-
-    }
-
-    public CartEntity memberCartView(Long memberNo){
-        Optional<MemberEntity> memberEntity= memberRepository.findByNo(memberNo);
-        return cartRepository.findByMemberNo(memberEntity.get().getNo());
-    }
 
 
-
-    public ItemEntity itemSearch(Long no){
-        Optional<ItemEntity> item = itemRepository.findByNo(no);
-        ItemEntity itemEntity = item.get();
-        return itemEntity;
-
-    }
-
-    public MemberEntity memberSearch(Long no){
-        Optional<MemberEntity> member = memberRepository.findByNo(no);
-        if(member.isPresent()) {
-            MemberEntity memberEntity = member.get();
-         return memberEntity;
-
-        }else{
-            return null;
-        }
-    }
-
-    public Long memberid (String email) {
-        Optional<MemberEntity> member = memberRepository.findByEmail(email);
-
-        return member.get().getNo();
-
-    }
-
-
-
-//        public List<CartItemDto> cartVIew(Long id){
-//
-//        Optional<MemberEntity> member=memberRepository.findByNo(id);
-//        cartRepository.findByMemberNo(member.get().getNo());
-//
-//        List<CartItemDto> cartItemDto = new ArrayList<>();
-//
-//           List<CartItemEntity> cartItemEntities = cartItemRepository.findAll();
-//
-//           for(CartItemEntity cartItem : cartItemEntities){
-//                ItemEntity itemEntity =cartItem.getItem();
-//
-//               cartItemDto.add(CartItemDto.cartItemDto(cartItem,itemEntity));
-//           }
-//            return cartItemDto;
-//        }
+//장바구니 View
 public List<CartItemDto> cartVIew(Long id){
     Optional<MemberEntity> member=memberRepository.findByNo(id);
 
@@ -133,22 +74,27 @@ public List<CartItemDto> cartVIew(Long id){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     //장바구니 안에 특정 아이템 삭제
         public void cartItemDelete(Long cartItemNo){
-            CartItemEntity cartItem= cartItemRepository.deleteByNo(cartItemNo);
+            Optional<CartItemEntity> cartItem= cartItemRepository.findByNo(cartItemNo);
+            CartItemEntity cartItemEntity = cartItem.get();
+
+            cartItemRepository.delete(cartItemEntity);
+
+
         }
 
+    //상품 part
+    public MemberDto memberDtoSearch(Long memberNo){
 
+        Optional<MemberEntity> member = memberRepository.findByNo(memberNo);
+        if(member.isPresent()){
+            MemberDto memberDto = MemberDto.updateMemberDto(member.get());
+            return memberDto;
+        }else {
+            return null;
+        }
+
+    }
 
 }

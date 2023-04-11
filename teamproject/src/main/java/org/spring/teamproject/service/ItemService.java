@@ -3,9 +3,11 @@ package org.spring.teamproject.service;
 import lombok.RequiredArgsConstructor;
 import org.spring.teamproject.dto.ItemDto;
 import org.spring.teamproject.entity.ItemEntity;
+import org.spring.teamproject.entity.MemberEntity;
 import org.spring.teamproject.repository.FileRepository;
 import org.spring.teamproject.repository.ItemRepository;
 //import org.spring.teamproject.repository.MemberRepository;
+import org.spring.teamproject.repository.MemberRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -22,13 +24,15 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
     private final FileRepository fileRepository;
-//    private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     // 트랙 추가
     @Transactional
-    public void itemInsert(ItemDto itemDto)  {
+    public void itemInsert(ItemDto itemDto,Long id )  {
 
-            ItemEntity itemEntity=ItemEntity.toItemEntity(itemDto);
+            Optional<MemberEntity> member= memberRepository.findByNo(id);
+
+            ItemEntity itemEntity=ItemEntity.itemSave(itemDto,member.get());
             itemRepository.save(itemEntity);
 
     }
@@ -113,6 +117,13 @@ public class ItemService {
     public void trackDelete(Long no) {
 
         itemRepository.deleteByNo(no);
+    }
+
+    public ItemEntity itemSearch(Long no){
+        Optional<ItemEntity> item = itemRepository.findByNo(no);
+        ItemEntity itemEntity = item.get();
+        return itemEntity;
+
     }
 
 }

@@ -36,11 +36,15 @@
                             <li>PRICE</li>
                         </ul>
                     </div>
+
                     <div class="info-data">
                         <ul th:each="list : ${cartItem}">
                             <li><img src="/img/track/music.png" alt=""></li>
                             <li th:text="${list.producer}"></li>
                             <li th:text="${list.price}"></li>
+                            <form th:action="@{|/cart/delete/${list.no}|}"method="post">
+                            <li><button type="submit">Delete</button> </li>
+                            </form>
                         </ul>
                     </div>
 

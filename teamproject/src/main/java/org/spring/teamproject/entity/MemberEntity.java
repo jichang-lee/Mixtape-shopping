@@ -43,10 +43,7 @@ public class MemberEntity extends BaseEntity{
     @OneToMany(mappedBy = "boardJoinMember",cascade = CascadeType.REMOVE)
     private List<BoardEntity> boardEntityList = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "reply_member",cascade = CascadeType.REMOVE)
-//    private List<ReplyEntity> replyEntityList= new ArrayList<>();
-    //@OneToOne
-    //text
+
 
     public static MemberEntity memberEntity(MemberDto memberDto,
                                             PasswordEncoder passwordEncoder){

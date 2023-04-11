@@ -80,6 +80,19 @@ public class ItemEntity extends BaseEntity{
         return itemEntity;
     }
 
+    public static ItemEntity itemSave(ItemDto itemDto,MemberEntity memberEntity) {
+
+        ItemEntity itemEntity = new ItemEntity();
+        itemEntity.setTitle(itemDto.getTitle());
+        itemEntity.setDuration(itemDto.getDuration());
+        itemEntity.setProducer(itemDto.getProducer());
+        itemEntity.setPrice(itemDto.getPrice());
+        itemEntity.setBpm(itemDto.getBpm());
+        itemEntity.setGenre(itemDto.getGenre());
+        itemEntity.setItem_member(memberEntity);
+
+        return itemEntity;
+    }
 
 
 

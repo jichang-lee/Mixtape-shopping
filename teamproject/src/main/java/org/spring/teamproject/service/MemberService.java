@@ -76,6 +76,27 @@ public class MemberService {
         return memberDtoList;
     }
 
+    public String memberEmail(String email){
+        Optional<MemberEntity> member = memberRepository.findByEmail(email);
+        return member.get().getEmail();
+    }
 
+    public Long memberid (String email) {
+        Optional<MemberEntity> member = memberRepository.findByEmail(email);
+
+        return member.get().getNo();
+
+    }
+
+    public MemberEntity memberSearch(Long no){
+        Optional<MemberEntity> member = memberRepository.findByNo(no);
+        if(member.isPresent()) {
+            MemberEntity memberEntity = member.get();
+            return memberEntity;
+
+        }else{
+            return null;
+        }
+    }
 
 }
